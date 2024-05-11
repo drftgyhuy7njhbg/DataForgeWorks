@@ -1,9 +1,10 @@
-function getIntersectionNode(headA, headB) {
-  let currA = headA;
-  let currB = headB;
-  while (currA !== currB) {
-    currA = currA ? currA.next : headB;
-    currB = currB ? currB.next : headA;
+function hasCycle(head) {
+  let slow = head;
+  let fast = head;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) return true;
   }
-  return currA;
+  return false;
 }
